@@ -1,4 +1,5 @@
 import os
+from config.db_development import DATABASES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -58,15 +59,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'service24.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
