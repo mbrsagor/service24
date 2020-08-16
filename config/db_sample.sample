@@ -1,0 +1,1 @@
+DATABASES = {    'default': {        'ENGINE': 'djongo',        'NAME': 'db_name',        'host': 'localhost',        'port': 27017    }}
