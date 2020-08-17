@@ -112,3 +112,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MESSAGE_TAGS = {
     messages.INFO: 'SUCCESS',
 }
+
+LOGIN_URL = 'login/'
+LOGIN_REDIRECT_URL = 'login/'
