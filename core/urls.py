@@ -1,1 +1,1 @@
-from django.urls import pathurlpatterns = []
+from django.urls import pathfrom core.views.auth import LoginViewurlpatterns = [    path('login/', LoginView.as_view(), name='login'),]
