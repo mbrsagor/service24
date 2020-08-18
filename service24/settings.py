@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
     'core',
     'service',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ MESSAGE_TAGS = {
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = 'login/'
 
-# AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'user.User'
 
 # User Roles
 AGENT_GROUP = 'Agent'
