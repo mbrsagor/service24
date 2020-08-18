@@ -115,3 +115,12 @@ MESSAGE_TAGS = {
 
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = 'login/'
+
+# AUTH_USER_MODEL = 'core.User'
+
+# User Roles
+AGENT_GROUP = 'Agent'
+EDITOR_GROUP = 'Editor'
+ADMIN_GROUP = 'Admin'
+MODERATOR_GROUP = 'Moderator'
+USER_GROUP = 'User'

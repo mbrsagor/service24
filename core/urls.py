@@ -1,1 +1,1 @@
-from django.urls import pathfrom core.views.auth import LoginViewurlpatterns = [    path('login/', LoginView.as_view(), name='login'),]
+from django.urls import pathfrom core.views.auth import Login, Logoutfrom core.views.dashboard import Dashboardurlpatterns = [    path('', Dashboard.as_view(), name='dashboard'),    path('login/', Login.as_view(), name='login'),    path('logout/', Logout.as_view(), name='logout'),]
