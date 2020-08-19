@@ -3,8 +3,11 @@ from django.contrib.auth import login, logout
 from django.shortcuts import resolve_url
 from django.views import View
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from core.forms.auth.forms import CustomAuthenticationForm
+from core.forms.auth.registrationForm import CustomUserCreationForm
 
 
 class Login(LoginView):
@@ -32,3 +35,9 @@ class Logout(View):
     def get(self, request):
         logout(request)
         return redirect('/login/')
+
+
+class SingUpView(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'auth/signup.html'

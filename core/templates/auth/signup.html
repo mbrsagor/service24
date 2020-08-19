@@ -7,28 +7,28 @@
 
     <div class="card">
         <div class="card-header text-center">
-            <h3 class="mb-1">Registrations</h3>
-            <p>Please enter your information.</p>
+            <h3 class="mb-1">Register My Account</h3>
         </div>
         <div class="card-body">
-            <div class="form-group">
-                <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Username"
-                       autocomplete="off">
-            </div>
-            <div class="form-group">
-                <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail"
-                       autocomplete="off">
-            </div>
-            <div class="form-group">
-                <input class="form-control form-control-lg" id="pass1" type="password" required=""
-                       placeholder="Password">
-            </div>
-            <div class="form-group">
-                <input class="form-control form-control-lg" required="" placeholder="Confirm">
-            </div>
-            <div class="form-group pt-2">
-                <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
-            </div>
+            <form method="post">
+                {% csrf_token %}
+{#                <div class="form-group">#}
+{#                    {{ form.username }}#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    {{ form.phone_number }}#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    {{ form.password1 }}#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    {{ form.password2 }}#}
+{#                </div>#}
+                {{ form.as_p }}
+                <div class="form-group pt-2">
+                    <button class="btn btn-block btn-primary" type="submit">Create Account</button>
+                </div>
+            </form>
         </div>
         <div class="card-footer bg-white">
             <p>Already member? <a href="{% url 'login' %}" class="text-secondary">Login Here.</a></p>
