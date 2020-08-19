@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'user',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,10 +121,10 @@ LOGIN_REDIRECT_URL = 'login/'
 
 AUTH_USER_MODEL = 'user.User'
 
-# Mail sending using SMTP
-# EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'testsite_app'
-# EMAIL_HOST_PASSWORD = 'hellHappened'
-# EMAIL_USE_TLS = True
-# DEFAULT_FROM_EMAIL = 'TestSite Team <shagor47.me@gmail.com>'
+#Mail sending using SMTP
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'testsite_app'
+EMAIL_HOST_PASSWORD = 'hellHappened'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'TestSite Team <shagor47.me@gmail.com>'
