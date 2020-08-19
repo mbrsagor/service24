@@ -6983,3 +6983,8 @@ Media Query
 .custom-checkbox {
     padding-left: 0 !important;
 }
+
+.password_reset_form input{
+    width: 100% !important;
+    padding: 10px !important;
+}

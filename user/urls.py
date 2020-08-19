@@ -1,1 +1,1 @@
-from django.urls import pathurlpatterns = []
+from django.urls import pathfrom django.contrib.auth import views as auth_viewsurlpatterns = [    path('password_change', auth_views.PasswordChangeForm, name='password_change'),]
