@@ -118,3 +118,10 @@ LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = 'login/'
 
 AUTH_USER_MODEL = 'user.User'
+
+# Mail sending using SMTP
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'shagor47.me@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_email_password'
+EMAIL_PORT = 587

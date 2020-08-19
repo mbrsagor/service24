@@ -6976,3 +6976,10 @@ Media Query
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width:320px) {}
+
+
+
+/*custom desktop css*/
+.custom-checkbox {
+    padding-left: 0 !important;
+}
