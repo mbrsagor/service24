@@ -2066,6 +2066,7 @@ Pageheader
     width: 100%;
     position: fixed;
     bottom: 0;
+    z-index: 9999;
 }
 
 .footer-links {}
@@ -6988,4 +6989,13 @@ Media Query
 .password_reset_form input{
     width: 100% !important;
     padding: 10px !important;
+}
+
+.default_modal .input-group-text{
+    padding: 7px 15px !important;
+}
+
+.default_modal input:focus {
+    border-color: #d2d2e4 !important;
+    box-shadow: transparent !important;
 }
