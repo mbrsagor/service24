@@ -6999,3 +6999,13 @@ Media Query
     border-color: #d2d2e4 !important;
     box-shadow: transparent !important;
 }
+
+.category_message {
+    top: 70px;
+    position: absolute;
+    right: 35px;
+}
+
+.category_message li {
+    list-style: none !important;
+}
