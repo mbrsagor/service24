@@ -91,7 +91,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
@@ -115,6 +115,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Django Message Framework
 MESSAGE_TAGS = {
     messages.INFO: 'SUCCESS',
+    messages.ERROR: 'ERROR',
+    messages.WARNING: 'WARNING'
 }
 
 LOGIN_URL = 'login/'
