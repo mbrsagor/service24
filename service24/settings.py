@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'core',
     'service',
     'user',
+
+    # 3rd party app
+    'rest_framework',
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"  # During development only

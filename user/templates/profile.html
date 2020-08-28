@@ -1,1 +1,1 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>$Title$</title></head><body>$END$</body></html>
+{% extends 'base.html' %}{% block title %} Profile {% endblock %}{% block content %}    <h2>Hello I'm: {{ request.user.username }}</h2>    <h2>Phone number: {{ request.user }}</h2>    <p>Email Address: {{ request.use.email }}  </p>{% endblock %}
