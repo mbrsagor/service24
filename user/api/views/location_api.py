@@ -1,0 +1,1 @@
+from rest_framework.viewsets import ModelViewSetfrom rest_framework.permissions import IsAdminUserfrom core.models.location import Locationfrom user.api.serializers.location_serializer import LocationSerializerclass LocationViewSet(ModelViewSet):    serializer_class = LocationSerializer    queryset = Location    permission_classes = [IsAdminUser, ]
