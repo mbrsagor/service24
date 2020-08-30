@@ -1,1 +1,1 @@
-from django.urls import pathurlpatterns = []
+from django.urls import pathfrom service.views.service_view import AddService, ServiceListurlpatterns = [    path('add-service/', AddService.as_view(), name='add_service'),    path('service-list/', ServiceList.as_view(), name='service_list'),]
