@@ -2,6 +2,9 @@ from djongo import models
 from django.contrib.auth.models import AbstractUser
 from datetime import date
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 from core.models.base import BaseEntity
 
 
@@ -32,3 +35,9 @@ class Agent(BaseEntity):
     def company_age(self):
         today = date.today()
         return (today - self.age).days
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance=None, created=False, **kwargs):
+    if created:
+        Agent.objects.create(user=instance)
