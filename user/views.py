@@ -1,7 +1,9 @@
 from django.views.generic import ListView
+from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import redirect
 
 from .models import User
 
@@ -38,3 +40,12 @@ class UserListView(ListView):
             users = paginator.page(paginator.num_pages)
         context['users'] = users
         return context
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class UserDeleteView(View):
+
+    def get(self, request, username):
+        obj = User.objects.get(username=self.kwargs['username'])
+        obj.delete()
+        return redirect('/user/user-list/')
