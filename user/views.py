@@ -1,11 +1,12 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
 
-from .models import User
+from .models import User, Agent
+from .forms import CreateAgentFrom
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -49,3 +50,17 @@ class UserDeleteView(View):
         obj = User.objects.get(username=self.kwargs['username'])
         obj.delete()
         return redirect('/user/user-list/')
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CreateAgentProfile(CreateView):
+    template_name = 'agent/create_agent.html'
+    model = Agent
+    form_class = CreateAgentFrom
+    success_url = '/category/'
+    success_message = "Agent has been successfully created!"
+
+    def get_context_data(self, **kwargs):
+        return dict(
+            super(CreateAgentProfile, self).get_context_data(**kwargs)
+        )
