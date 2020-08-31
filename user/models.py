@@ -10,7 +10,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=14, unique=True)
 
     def __str__(self):
-        return self.phone_number
+        return self.username
 
 
 class Agent(BaseEntity):
