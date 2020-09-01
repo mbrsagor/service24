@@ -1,12 +1,12 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import redirect, render
-from django.contrib import messages
+from django.shortcuts import redirect
+from django.contrib.messages.views import SuccessMessageMixin
 
-from .models import User
+from .models import User, Agent
 from .forms import CreateAgentFrom
 
 
@@ -53,20 +53,14 @@ class UserDeleteView(View):
         return redirect('/user/user-list/')
 
 
-@login_required(login_url='/login/')
-def create_agent_view(request):
-    form = CreateAgentFrom()
-    if request.method == 'POST':
-        form = CreateAgentFrom(request.POST or request.FILES)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.save(request.user)
-            messages.add_message(request, messages.INFO, "Agent profile has been created.")
-            return redirect('user/profile/')
-        else:
-            messages.add_message(request, messages.WARNING, "Sorry! something went to wrong while profile update.")
-    context = {
-        'form': form
-    }
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CreateAgent(SuccessMessageMixin, CreateView):
+    success_message = "Agent successfully created!"
     template_name = 'agent/create_agent.html'
-    return render(request, template_name, context)
+    success_url = '/'
+    model = Agent
+    form_class = CreateAgentFrom
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateAgent, self).form_valid(form)
