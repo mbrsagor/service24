@@ -7009,3 +7009,11 @@ Media Query
 .category_message li {
     list-style: none !important;
 }
+
+.agent_profile_create .input-group-text{
+    padding: 8px !important;
+}
+
+.agent_profile_create .custom_margin_top{
+    margin-top: 35px !important;
+}

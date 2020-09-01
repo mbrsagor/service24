@@ -9,11 +9,6 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
-                <li class="nav-item">
-                    <div id="custom-search" class="top-search-bar">
-                        <input class="form-control" type="text" placeholder="Search..">
-                    </div>
-                </li>
                 <li class="nav-item dropdown notification">
                     <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
@@ -137,8 +132,8 @@
                             <h5 class="mb-0 text-white nav-user-name">{{ user.username }}</h5>
                             {% endif %}
                         </div>
-                        <a class="dropdown-item" href="/user/profile/"><i class="fas fa-user mr-2"></i>Account</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="{% url 'create_agent' %}"><i class="fas fa-cog mr-2"></i>Setting</a>
                         <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-power-off
                         mr-2"></i>Logout</a>
                     </div>
