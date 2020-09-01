@@ -1,11 +1,12 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from django.contrib import messages
 
-from .models import User, Agent
+from .models import User
 from .forms import CreateAgentFrom
 
 
@@ -52,15 +53,21 @@ class UserDeleteView(View):
         return redirect('/user/user-list/')
 
 
-@method_decorator(login_required(login_url='/login/'), name='dispatch')
-class CreateAgentProfile(CreateView):
+# @method_decorator(login_required(login_url='/login/'), name='dispatch')
+@login_required(login_url='/login/')
+def create_agent_view(request):
+    form = CreateAgentFrom()
+    if request.method == 'POST':
+        form = CreateAgentFrom(request.POST or request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.add_message(request, messages.INFO, "Agent profile has been created.")
+            return redirect('/')
+        else:
+            messages.add_message(request, messages.WARNING, "Sorry! something went to wrong while profile update.")
+    context = {
+        'form': form
+    }
     template_name = 'agent/create_agent.html'
-    model = Agent
-    form_class = CreateAgentFrom
-    success_url = '/category/'
-    success_message = "Agent has been successfully created!"
-
-    def get_context_data(self, **kwargs):
-        return dict(
-            super(CreateAgentProfile, self).get_context_data(**kwargs)
-        )
+    return render(request, template_name, context)
