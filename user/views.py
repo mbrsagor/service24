@@ -53,7 +53,6 @@ class UserDeleteView(View):
         return redirect('/user/user-list/')
 
 
-# @method_decorator(login_required(login_url='/login/'), name='dispatch')
 @login_required(login_url='/login/')
 def create_agent_view(request):
     form = CreateAgentFrom()
@@ -61,9 +60,9 @@ def create_agent_view(request):
         form = CreateAgentFrom(request.POST or request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.save()
+            instance.save(request.user)
             messages.add_message(request, messages.INFO, "Agent profile has been created.")
-            return redirect('/')
+            return redirect('user/profile/')
         else:
             messages.add_message(request, messages.WARNING, "Sorry! something went to wrong while profile update.")
     context = {

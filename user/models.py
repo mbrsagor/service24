@@ -29,7 +29,7 @@ class Agent(BaseEntity):
     profile_picture = models.ImageField(upload_to='agent', blank=True)
 
     def __str__(self):
-        return self.agent.username
+        return self.company_name
 
     @property
     def company_age(self):
@@ -38,6 +38,6 @@ class Agent(BaseEntity):
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance=None, created=False, **kwargs):
+def create_agent_profile(sender, instance=None, created=False, **kwargs):
     if created:
-        Agent.objects.create(user=instance)
+        Agent.objects.create(agent=instance)
