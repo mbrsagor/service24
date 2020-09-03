@@ -15,7 +15,9 @@ admin.site.register(User, AdminUser)
 
 
 class AgentAdmin(admin.ModelAdmin):
-    list_display = ['agent', 'company_name', 'website']
+    list_display_links = ['id', 'agent', 'company_name']
+    list_editable = ['contact_number', 'website']
+    list_display = ['id', 'agent', 'company_name', 'website', 'contact_number']
 
 
-admin.site.register(Agent)
+admin.site.register(Agent, AgentAdmin)
