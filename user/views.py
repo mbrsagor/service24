@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
 from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic.base import TemplateView
 
 from .models import User, Agent
 from .forms import CreateAgentFrom
@@ -64,3 +65,11 @@ class CreateAgent(SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(CreateAgent, self).form_valid(form)
+
+
+class AgentProfile(TemplateView):
+    template_name = 'agent/agent_profile.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AgentProfile, self).dispatch(*args, **kwargs)
