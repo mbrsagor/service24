@@ -9,7 +9,7 @@ from core.models.base import BaseEntity
 
 
 class User(AbstractUser):
-    _id = models.ObjectIdField()
+    # _id = models.ObjectIdField()
     email = models.EmailField(blank=True, unique=False)
     phone_number = models.CharField(max_length=14, unique=True)
 
