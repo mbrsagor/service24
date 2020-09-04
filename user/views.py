@@ -60,12 +60,6 @@ class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
     model = Agent
     form_class = CreateAgentFrom
 
-    # def get_object(self, **kwargs):
-    #     username = self.kwargs.get("username")
-    #     if username is None:
-    #         raise redirect('/login/')
-    #     return get_object_or_404(Agent, user__username__iexact=username)
-
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class AgentProfile(View):
