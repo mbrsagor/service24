@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from datetime import date
 
 from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 from core.models.base import BaseEntity
 
@@ -37,7 +36,11 @@ class Agent(BaseEntity):
         return (today - self.age).days
 
 
-@receiver(post_save, sender=User)
-def create_agent_profile(sender, instance=None, created=False, **kwargs):
-    if created:
-        Agent.objects.create(agent=instance)
+def create_profile(sender, **kwargs):
+    agent = kwargs["instance"]
+    if kwargs["created"]:
+        agent_profile = Agent(agent=agent)
+        agent_profile.save()
+
+
+post_save.connect(create_profile, sender=User)

@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, UpdateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -55,16 +55,16 @@ class UserDeleteView(View):
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
-class CreateAgent(SuccessMessageMixin, CreateView):
-    success_message = "Agent successfully created!"
-    template_name = 'agent/create_agent.html'
+class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
+    success_message = "Agent successfully updated!"
+    template_name = 'agent/update_agent.html'
     success_url = '/'
     model = Agent
     form_class = CreateAgentFrom
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(CreateAgent, self).form_valid(form)
+        return super(UpdateAgentProfile, self).form_valid(form)
 
 
 class AgentProfile(TemplateView):
