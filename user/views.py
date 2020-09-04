@@ -3,7 +3,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.base import TemplateView
 
@@ -58,13 +58,15 @@ class UserDeleteView(View):
 class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
     success_message = "Agent successfully updated!"
     template_name = 'agent/update_agent.html'
-    success_url = '/'
+    success_url = f'/user/update-agent-profile/{id}'
     model = Agent
     form_class = CreateAgentFrom
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(UpdateAgentProfile, self).form_valid(form)
+    # def get_object(self, **kwargs):
+    #     username = self.kwargs.get("username")
+    #     if username is None:
+    #         raise redirect('/login/')
+    #     return get_object_or_404(Agent, user__username__iexact=username)
 
 
 class AgentProfile(TemplateView):
