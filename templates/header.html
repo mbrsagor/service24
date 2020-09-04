@@ -25,45 +25,10 @@
                                                     alt=""
                                                     class="user-avatar-md rounded-circle"></div>
                                             <div class="notification-list-user-block"><span
-                                                    class="notification-list-user-name">Jeremy Rakestraw</span>accepted
+                                                    class="notification-list-user-name">
+                                                        Smart-tech </span>accepted
                                                 your invitation to join the team.
-                                                <div class="notification-date">2 min ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="notification-info">
-                                            <div class="notification-list-user-img"><img
-                                                    src="{% static 'assets/images/avatar-3.jpg' %}" alt=""
-                                                    class="user-avatar-md rounded-circle"></div>
-                                            <div class="notification-list-user-block"><span
-                                                    class="notification-list-user-name">John Abraham </span>is now
-                                                following you
-                                                <div class="notification-date">2 days ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="notification-info">
-                                            <div class="notification-list-user-img"><img
-                                                    src="{% static 'assets/images/avatar-4.jpg' %}" alt=""
-                                                    class="user-avatar-md rounded-circle"></div>
-                                            <div class="notification-list-user-block"><span
-                                                    class="notification-list-user-name">Monaan Pechi</span> is
-                                                watching your main repository
-                                                <div class="notification-date">2 min ago</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="notification-info">
-                                            <div class="notification-list-user-img"><img
-                                                    src="{% static 'assets/images/avatar-5.jpg' %}" alt=""
-                                                    class="user-avatar-md rounded-circle"></div>
-                                            <div class="notification-list-user-block"><span
-                                                    class="notification-list-user-name">Jessica Caruso</span>accepted
-                                                your invitation to join the team.
-                                                <div class="notification-date">2 min ago</div>
+                                                <div class="notification-date">2 days age</div>
                                             </div>
                                         </div>
                                     </a>
@@ -72,51 +37,6 @@
                         </li>
                         <li>
                             <div class="list-footer"><a href="#">View all notifications</a></div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown connection">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
-                    <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
-                        <li class="connection-list">
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                    <a href="#" class="connection-item"><img
-                                            src="{% static 'assets/images/github.png' %}" alt="">
-                                        <span>Github</span></a>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                    <a href="#" class="connection-item"><img
-                                            src="{% static 'assets/images/dribbble.png' %}"
-                                            alt=""> <span>Dribbble</span></a>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                    <a href="#" class="connection-item"><img
-                                            src="{% static 'assets/images/dropbox.png' %}" alt="">
-                                        <span>Dropbox</span></a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                    <a href="#" class="connection-item"><img
-                                            src="{% static 'assets/images/bitbucket.png' %}"
-                                            alt=""> <span>Bitbucket</span></a>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                    <a href="#" class="connection-item"><img
-                                            src="{% static 'assets/images/mail_chimp.png' %}"
-                                            alt=""><span>Mail chimp</span></a>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                    <a href="#" class="connection-item"><img
-                                            src="{% static 'assets/images/slack.png' %}" alt="">
-                                        <span>Slack</span></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="conntection-footer"><a href="#">More</a></div>
                         </li>
                     </ul>
                 </li>
@@ -129,7 +49,7 @@
                          aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
                             {% if user.is_authenticated %}
-                            <h5 class="mb-0 text-white nav-user-name">{{ user.username }}</h5>
+                                <h5 class="mb-0 text-white nav-user-name">{{ user.username }}</h5>
                             {% endif %}
                         </div>
                         <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user mr-2"></i>Account</a>
