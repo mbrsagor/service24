@@ -28,7 +28,7 @@ class Agent(BaseEntity):
     profile_picture = models.ImageField(upload_to='agent', blank=True)
 
     def __str__(self):
-        return self.company_name
+        return self.agent.username
 
     @property
     def company_age(self):

@@ -77,4 +77,4 @@ class AgentProfile(ListView):
     template_name = 'agent/agent_profile.html'
 
     def get_queryset(self):
-        return Agent.objects.filter(agent=self.request.user)
+        return Agent.objects.get(agent=self.request.user)
