@@ -1,9 +1,9 @@
-from django.views.generic import ListView, UpdateView, CreateView
+from django.views.generic import ListView, UpdateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 
@@ -72,10 +72,9 @@ class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
-class AgentProfile(View):
+class AgentProfile(ListView):
+    context_object_name = 'agent'
+    template_name = 'agent/agent_profile.html'
 
-    def get(self, request):
-        agent = Agent.objects.get(id=self.request.user.id)
-        template_name = 'agent/agent_profile.html'
-        context = {'agent': agent}
-        return render(request, template_name, context)
+    def get_queryset(self):
+        return Agent.objects.filter(agent=self.request.user)
