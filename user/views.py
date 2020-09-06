@@ -1,4 +1,4 @@
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, CreateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -60,6 +60,10 @@ class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
     template_name = 'agent/update_agent.html'
     model = Agent
     form_class = CreateAgentFrom
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(agent=self.request.user)
 
     def get_success_url(self):
         return reverse('update_agent_profile', kwargs={
