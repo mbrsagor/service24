@@ -37,7 +37,7 @@ class Agent(BaseEntity):
 
 
 @receiver(post_save, sender=User)
-def create_profile_for_new_user(sender, created, instance, **kwargs):
+def create_agent_profile(sender, created, instance, **kwargs):
     if created:
         agent_profile = Agent(agent=instance)
         agent_profile.save()

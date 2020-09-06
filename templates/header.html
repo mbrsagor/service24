@@ -56,8 +56,6 @@
                         {% if request.user.is_superuser or request.user.is_staff %}
                             <a class="dropdown-item" href="{% url 'update_agent_profile' user.pk %}"><i class="fas fa-cog
                         mr-2"></i>Setting</a>
-                            <a class="dropdown-item" href="{% url 'agent_profile' %}"><i class="fas fa-cog
-                        mr-2"></i>Agent</a>
                         {% endif %}
                         <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-power-off
                         mr-2"></i>Logout</a>
