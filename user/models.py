@@ -36,12 +36,8 @@ class Agent(BaseEntity):
         return (today - self.age).days
 
 
-@receiver(post_save, sender=Agent)
-def create_user_profile(sender, instance, created, **kwargs):
+@receiver(post_save, sender=User)
+def create_profile_for_new_user(sender, created, instance, **kwargs):
     if created:
-        Agent.objects.create(agent=instance)
-
-
-@receiver(post_save, sender=Agent)
-def save_user_profile(sender, instance, **kwargs):
-    instance.agent.save()
+        agent_profile = Agent(agent=instance)
+        agent_profile.save()
