@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect, render
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse
 
 from .models import User, Agent
 from .forms import CreateAgentFrom
@@ -59,6 +60,11 @@ class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
     template_name = 'agent/update_agent.html'
     model = Agent
     form_class = CreateAgentFrom
+
+    def get_success_url(self):
+        return reverse('update_agent_profile', kwargs={
+            'pk': self.object.pk,
+        })
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
