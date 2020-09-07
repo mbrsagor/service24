@@ -86,3 +86,10 @@ class ListOfAgent(ListView):
     paginate_by = 7
     context_object_name = 'agent_list'
     template_name = 'agent/agent_list.html'
+
+
+class DeleteAgent(View):
+    def get(self, request, id):
+        obj = Agent.objects.get(id=id)
+        obj.delete()
+        return redirect('/user/agent-list/')
