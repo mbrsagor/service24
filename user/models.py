@@ -31,6 +31,10 @@ class Agent(BaseEntity):
         return self.agent.username
 
     @property
+    def get_fullname(self):
+        return f"{self.agent.first_name} {self.agent.last_name}"
+
+    @property
     def company_age(self):
         today = date.today()
         return (today - self.age).days
