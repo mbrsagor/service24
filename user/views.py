@@ -24,7 +24,7 @@ class ProfileListView(ListView):
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UserListView(ListView):
     model = User
-    paginate_by = 10
+    paginate_by = 6
     context_object_name = 'users'
     template_name = 'users/user_list.html'
 
@@ -78,3 +78,11 @@ class AgentProfile(ListView):
 
     def get_queryset(self):
         return Agent.objects.get(agent=self.request.user)
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class ListOfAgent(ListView):
+    model = Agent
+    paginate_by = 7
+    context_object_name = 'agent_list'
+    template_name = 'agent/agent_list.html'
