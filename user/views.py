@@ -9,16 +9,21 @@ from django.urls import reverse
 
 from .models import User, Agent
 from .forms import CreateAgentFrom
+from service.models.order import Order
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class ProfileListView(ListView):
     model = User
     template_name = 'profile.html'
+    context_object_name = 'order_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
