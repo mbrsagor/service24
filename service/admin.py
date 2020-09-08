@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from service.models.service import Service
+from service.models.order import Order, Schedule
 
 
 class ModelService(admin.ModelAdmin):
@@ -11,3 +12,5 @@ class ModelService(admin.ModelAdmin):
 
 
 admin.site.register(Service, ModelService)
+admin.site.register(Order)
+admin.site.register(Schedule)
