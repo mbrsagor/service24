@@ -12,5 +12,15 @@ class ModelService(admin.ModelAdmin):
 
 
 admin.site.register(Service, ModelService)
-admin.site.register(Order)
+
+
+class ModelOrder(admin.ModelAdmin):
+    list_display = ['id', 'user', 'item', 'schedule', 'phone_number', 'created_at']
+    search_fields = ['id', 'phone_number']
+    list_filter = ['user', 'phone_number']
+    list_display_links = ['user']
+    list_per_page = 8
+
+
+admin.site.register(Order, ModelOrder)
 admin.site.register(Schedule)
