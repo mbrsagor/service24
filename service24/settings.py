@@ -134,3 +134,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'user'
 EMAIL_HOST_PASSWORD = 'password'
 DEFAULT_FROM_EMAIL = 'your email'
+
+# Django REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 8
+}
