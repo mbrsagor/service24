@@ -1,1 +1,0 @@
-from rest_framework.serializers import ModelSerializerfrom core.models.category import Categoryclass CategorySerializer(ModelSerializer):    class Meta:        model = Category        fields = (            'id', 'name', 'parent', 'order_by', 'category_image'        )
