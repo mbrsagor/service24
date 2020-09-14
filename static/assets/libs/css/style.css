@@ -7023,5 +7023,5 @@ Media Query
 }
 
 .service_details img {
-    display: none;
+    width: 100%;
 }
