@@ -7021,3 +7021,7 @@ Media Query
 .ServiceForm .input-group-text {
     padding-bottom: 5px !important;
 }
+
+.service_details img {
+    display: none;
+}
