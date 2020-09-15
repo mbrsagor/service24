@@ -78,6 +78,7 @@ class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class AgentProfile(ListView):
+    model = Agent
     context_object_name = 'agent'
     template_name = 'agent/agent_profile.html'
 
