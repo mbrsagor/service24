@@ -1,4 +1,4 @@
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DetailView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -48,6 +48,12 @@ class UserListView(ListView):
             users = paginator.page(paginator.num_pages)
         context['users'] = users
         return context
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class UserDetailView(DetailView):
+    template_name = 'profile.html'
+    model = User
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
