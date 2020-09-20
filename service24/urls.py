@@ -25,6 +25,7 @@ urlpatterns = [
     path('service/', include('service.urls')),
     path('user/', include('user.urls')),
     path('api/', include('api.urls')),
+    path('api/rest-auth/', include('rest_auth.urls')),
     # path('account/', include('django.contrib.auth.urls')),
 ]
 

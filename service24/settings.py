@@ -33,6 +33,8 @@ INSTALLED_APPS = [
 
     # 3rd party app
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"  # During development only
