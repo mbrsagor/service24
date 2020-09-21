@@ -1,0 +1,1 @@
+from enum import Enumclass OrderStatus(Enum):    PENDING = 0    CONFIRM = 1    IN_PROGRESS = 2    CANCEL = 3    FINISHED = 4    @classmethod    def get_choices(cls):        return [(_attr, _attr.value) for _attr in OrderStatus]

@@ -8,7 +8,8 @@
 - Django 3.0.5
 - MongoDB 4.0.14
 
-The following steps will walk you thru installation on a Mac. Linux should be similar. It's also possible to develop on a Windows machine, but I have not documented the steps.If you've developed django apps on Windows, you should have little problem getting up and running.
+The following steps will walk you thru installation on a Mac. Linux should be similar. It's also possible to develop 
+on a Windows machine, but I have not documented the steps. If you've developed django apps on Windows, you should have little problem getting up and running.
 
 ###### On Mac
 First you will install mongo in your system.
@@ -47,6 +48,9 @@ Activate it:
 source venv/bin/activate
 ```
 
+###### Config database on the project.
+> First go to `config` folder then change the file name db_sample => db_development.py
+
 Install the python dependencies which includes django and other libraries.
 
 ```
@@ -58,10 +62,3 @@ pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py runserver
 ```
-
-## Developer Guidelines
-1. You have to follow [PEP8](https://www.python.org/dev/peps/pep-0008/).
-2. Yoh have to merge first forward only. See [how](http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html).
-3. After merging the Pull Request, delete the branch from remote. Only specific branch `master` should be in remote.
-
-   `git push origin --delete <branchName>`
