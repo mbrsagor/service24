@@ -7029,3 +7029,7 @@ Media Query
 .profile_pic img {
     width: 100%;
 }
+
+.dashboard-header .sidebar-nav-fixed li {
+    display: inline-flex;
+}
