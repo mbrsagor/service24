@@ -99,6 +99,9 @@ class ListOfAgent(ListView):
     context_object_name = 'agent_list'
     template_name = 'agent/agent_list.html'
 
+    def get_queryset(self):
+        return self.model.objects.filter(agent=self.request.user.is_staff)
+
 
 class DeleteAgent(View):
     def get(self, request, id):
