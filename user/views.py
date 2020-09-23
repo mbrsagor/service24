@@ -103,6 +103,7 @@ class ListOfAgent(ListView):
         return User.objects.filter(is_staff=True)
 
 
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
 class DeleteAgent(View):
     def get(self, request, id):
         obj = Agent.objects.get(id=id)
