@@ -41,10 +41,6 @@
                             </li>
                         </ul>
                     </li>
-                {% else %}
-                    <div class="header_nav">
-                        {% include 'header_nav.html' %}
-                    </div>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown nav-user">
