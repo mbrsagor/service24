@@ -7042,3 +7042,8 @@ Media Query
     margin-left: 5px !important;
     margin-right: 8px !important;
 }
+
+.custom_service_img img {
+    width: 230px !important;
+    height: 200px !important;
+}
