@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from user.models import User
 from core.models.base import BaseEntity
@@ -21,6 +22,17 @@ class Order(BaseEntity):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='order_schedule')
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='order_location')
     order_date = models.DateField()
+
+    # class SCHEDULES(models.TextChoices):
+    #     REGULAR = 'RE', _('Regular')
+    #     URGENT = 'UR', _('Urgent')
+    #
+    # quantity = models.IntegerField(default=1)
+    # schedule_type = models.CharField(
+    #     max_length=2,
+    #     choices=SCHEDULES.choices,
+    #     default=SCHEDULES.REGULAR,
+    # )
     phone_number = models.IntegerField(default=0)
     status = models.BooleanField(default=False, blank=True)
     address = models.TextField(default=None)
