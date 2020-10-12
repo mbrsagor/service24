@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from service.models.service import Service
 from service.models.order import Order, Schedule
+from service.models.review import Review
 
 
 class ModelService(admin.ModelAdmin):
@@ -24,3 +25,14 @@ class ModelOrder(admin.ModelAdmin):
 
 admin.site.register(Order, ModelOrder)
 admin.site.register(Schedule)
+
+
+class ModelReview(admin.ModelAdmin):
+    list_display = ['id', 'user', 'review', 'title', 'rating']
+    search_fields = ['title']
+    list_editable = ['rating']
+    list_filter = ['title', 'review', 'rating']
+    list_per_page = 8
+
+
+admin.site.register(Review, ModelReview)
