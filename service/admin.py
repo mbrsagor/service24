@@ -32,6 +32,7 @@ class ModelReview(admin.ModelAdmin):
     search_fields = ['title']
     list_editable = ['rating']
     list_filter = ['title', 'review', 'rating']
+    list_display_links = ['id', 'user']
     list_per_page = 8
 
 
