@@ -28,10 +28,10 @@ admin.site.register(Schedule)
 
 
 class ModelReview(admin.ModelAdmin):
-    list_display = ['id', 'user', 'review', 'title', 'rating']
+    list_display = ['id', 'user', 'service', 'title', 'rating']
     search_fields = ['title']
     list_editable = ['rating']
-    list_filter = ['title', 'review', 'rating']
+    list_filter = ['title', 'service', 'rating']
     list_display_links = ['id', 'user']
     list_per_page = 8
 
