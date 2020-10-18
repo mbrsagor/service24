@@ -3,6 +3,7 @@ from django.contrib import admin
 from service.models.service import Service
 from service.models.order import Order, Schedule
 from service.models.review import Review
+from service.models.payment import Payment
 
 
 class ModelService(admin.ModelAdmin):
@@ -37,3 +38,5 @@ class ModelReview(admin.ModelAdmin):
 
 
 admin.site.register(Review, ModelReview)
+
+admin.site.register(Payment)
