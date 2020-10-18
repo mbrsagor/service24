@@ -24,7 +24,7 @@
                                 <th><img src="{{ obj.logo }}" alt="Payment Logo"></th>
                                 <th>{{ obj.created_at }}</th>
                                 <th>
-                                    <a href=""><i class="fa fa-eye"></i></a>
+                                    <a href="{% url 'update_payment' obj.id %}"><i class="fa fa-eye"></i></a>
                                     <a href=""><i class="fa fa-trash"></i></a>
                                 </th>
                             </tr>
