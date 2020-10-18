@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Payment list {% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6 offset-3">
+            <div class="card">
+                <div class="card_body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Payment Name</th>
+                            <th>Logo</th>
+                            <th>Created Date</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in payment %}
+                            <tr>
+                                <th>{{ obj.name }}</th>
+                                <th><img src="{{ obj.logo }}" alt="Payment Logo"></th>
+                                <th>{{ obj.created_at }}</th>
+                                <th>
+                                    <a href=""><i class="fa fa-eye"></i></a>
+                                    <a href=""><i class="fa fa-trash"></i></a>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

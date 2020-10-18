@@ -8,10 +8,9 @@ class PaymentForm(ModelForm):
     class Meta:
         model = Payment
         fields = '__all__'
-        exclude = ('agent',)
 
         widgets = {
             'name': TextInput(
                 attrs={'class': 'form-control', 'id': 'name', 'placeholder': 'Enter payment name'}),
-            'logo': FileInput(attrs={'class': 'form-control', 'id': 'logo'})
+            'logo': FileInput(attrs={'class': 'custom-file-input', 'id': 'imageUpload'}),
         }
