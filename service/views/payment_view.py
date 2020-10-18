@@ -20,7 +20,7 @@ class PaymentCreateList(SuccessMessageMixin, CreateView, ListView):
     def get_context_data(self, **kwargs):
         return dict(
             super(PaymentCreateList, self).get_context_data(**kwargs),
-            category=self.model.objects.all().order_by('-id')
+            payment=self.model.objects.all().order_by('-id')
         )
 
 
