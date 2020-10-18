@@ -26,7 +26,7 @@ class PaymentCreateList(SuccessMessageMixin, CreateView, ListView):
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class PaymentUpdate(UpdateView):
-    template_name = 'payment/payment_list.html'
+    template_name = 'payment/modal.html'
     model = Payment
     form_class = PaymentForm
     success_url = '/service/payment/'
