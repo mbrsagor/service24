@@ -2,6 +2,9 @@ from django.contrib import admin
 from core.models.category import Category
 from core.models.location import Location
 
+admin.site.site_header = "Service24"
+admin.site.index_title = "Service24 Admin Panel"
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'parent', 'order_by', 'created_at', 'updated_at']
