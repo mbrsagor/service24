@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Payment update {% endblock %}
+
+{% block content %}
+
+    <!-- pageheader  -->
+    {% include "category/pageheader.html" %}
+    {% include "category/message.html" %}
+    <!-- end pageheader  -->
+
+    <div class="row">
+        <div class="col-lg-6 offset-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-header-title">Update Category</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Parent Category</label>
+                            {{ form.parent }}
+                        </div>
+                        <div class="form-group">
+                            <label for="order">Category Order</label>
+                            {{ form.order_by }}
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="imageUpload">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                {{ form.category_image }}
+                                <label class="custom-file-label" for="imageUpload">Category Image</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
