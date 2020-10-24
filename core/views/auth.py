@@ -27,7 +27,7 @@ class Login(LoginView):
         if remember_me:
             self.request.session.set_expiry(1209600)
 
-        return super(LoginView, self).form_valid(form)
+        return super(Login, self).form_valid(form)
 
 
 class Logout(View):
