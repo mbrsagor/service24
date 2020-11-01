@@ -19,7 +19,7 @@ admin.site.register(Category, CategoryAdmin)
 
 
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'parent', 'created_at', 'updated_at']
+    list_display = ['id', 'name', 'parent', 'location_type', 'created_at', 'updated_at']
     list_display_links = ['name']
     search_fields = ['name', 'is_active']
     list_filter = ['name', 'parent', 'is_active']

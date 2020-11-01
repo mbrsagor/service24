@@ -14,13 +14,6 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
                 {% if request.user.is_authenticated %}
-                    <div class="sidebar-nav-fixed mt-2">
-                        <li><a class="nav-link" href="#overview">Overview</a></li>
-                        <li><a href="#service">Service</a></li>
-                        <li><a href="#category">Category</a></li>
-                        <li><a href="#feedback">Client feedback</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </div>
                     {% if request.user.is_superuser or request.user.is_staff %}
                         <li class="nav-item dropdown notification">
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
