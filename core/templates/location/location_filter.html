@@ -1,9 +1,46 @@
 {% extends 'base.html' %}
 
-{% block title %} Category Filter {% endblock %}
+{% block title %} Location Filter {% endblock %}
 
 {% block content %}
 
-    
+    {% include 'location/pageheader.html' %}
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Location Filter</h5>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="name">Enter Location Name</label>
+                                    <input type="text" class="form-control" placeholder="Location name"
+                                           name="name" id="name">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="name">Enter Location Parent Name</label>
+                                    <input type="text" class="form-control" placeholder="Location parent name"
+                                           name="name" id="name">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="name">Enter Parent Name</label>
+                                    <input type="text" class="form-control" placeholder="Category name"
+                                           name="name" id="name">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm">Filter</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}
