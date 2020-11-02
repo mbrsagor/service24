@@ -7,5 +7,5 @@ class LocationFilter(django_filters.FilterSet):
     class Meta:
         model = Location
         fields = (
-            'name', 'location_type'
+            'name', 'parent', 'location_type'
         )
