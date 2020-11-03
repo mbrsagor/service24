@@ -119,4 +119,7 @@ class AgentFilterView(FilterView, ListView):
     model = Agent
     form_class = AgentFilter
     filterset_fields = ['agent', 'company_name', 'nid_number', 'website']
-    context_object_name = 'agent'
+    context_object_name = 'agent_list'
+
+    def get_queryset(self):
+        return User.objects.filter(is_staff=True)

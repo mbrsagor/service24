@@ -1,0 +1,34 @@
+<div class="card">
+    <h5 class="card-header">List of Agent</h5>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Owner</th>
+                <th>Company Name</th>
+                <th>Contact Number</th>
+                <th>Treat Lice</th>
+                <th>Website</th>
+                <th>Created Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if agent_list %}
+                {% for obj in agent_list %}
+                    <tr>
+                        <td>{{ obj.username }}</td>
+                        <td>{{ obj.service_agent.company_name }}</td>
+                        <td>0{{ obj.service_agent.contact_number }}</td>
+                        <td>{{ obj.service_agent.treat_lice }}</td>
+                        <td><a target="_blank" href="{{ obj.service_agent.website }}">
+                            {{ obj.service_agent.website }}</a></td>
+                        <td>{{ obj.service_agent.created_at }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3 class="text-center text-danger">Sorry! No agent added.</h3>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
