@@ -17,7 +17,8 @@ admin.site.register(Service, ModelService)
 
 
 class ModelOrder(admin.ModelAdmin):
-    list_display = ['id', 'user', 'item', 'schedule', 'phone_number', 'status', 'location', 'address', 'created_at']
+    list_display = ['id', 'user', 'item', 'schedule', 'phone_number', 'status', 'payment_status', 'location',
+                    'created_at']
     search_fields = ['id', 'phone_number']
     list_filter = ['user', 'phone_number']
     list_display_links = ['user']

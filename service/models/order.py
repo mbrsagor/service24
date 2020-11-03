@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from user.models import User
 from core.models.base import BaseEntity
@@ -22,7 +23,15 @@ class Order(BaseEntity):
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='order_location')
     order_date = models.DateField()
     phone_number = models.IntegerField(default=0)
-    status = models.BooleanField(default=False, blank=True)
+
+    class STATUS(models.TextChoices):
+        PENDING = 'pending', _('pending')
+        CONFIRM = 'confirm', _('confirm')
+        DOING = 'doing', _('doing')
+        DONE = 'done', _('done')
+
+    status = models.CharField(max_length=10, choices=STATUS.choices, default=STATUS.PENDING, null=True)
+    payment_status = models.BooleanField(default=False, blank=True)
     address = models.TextField(default=None)
 
     def __str__(self):
