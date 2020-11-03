@@ -28,6 +28,7 @@ class Order(BaseEntity):
         PENDING = 'pending', _('pending')
         CONFIRM = 'confirm', _('confirm')
         DOING = 'doing', _('doing')
+        REJECT = 'reject', _('reject')
         DONE = 'done', _('done')
 
     status = models.CharField(max_length=10, choices=STATUS.choices, default=STATUS.PENDING, null=True)
