@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Agent Filter {% endblock %}
+
+{% block content %}
+
+    {% include 'agent/pageheader.html' %}
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Agent Filter</h5>
+                <div class="card-body custom_filter">
+                    <form method="get">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="agent_name">Enter Agent Name</label>
+                                    {{ filter.form.agent }}
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="company_name">Enter Company Name</label>
+                                    {{ filter.form.company_name }}
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="nid_number">Company NID Number</label>
+                                    {{ filter.form.nid_number }}
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="website">Enter Company Website</label>
+                                    {{ filter.form.website }}
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm">
+                            Filter <i class="fa fa-filter"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if agent %}
+        {% include 'agent/agent.html' %}
+    {% endif %}
+
+{% endblock %}

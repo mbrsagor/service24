@@ -6,10 +6,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
+from django_filters.views import FilterView
 
 from .models import User, Agent
 from .forms import CreateAgentFrom
 from service.models.order import Order
+from .filter import AgentFilter
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -109,3 +111,12 @@ class DeleteAgent(View):
         obj = Agent.objects.get(id=id)
         obj.delete()
         return redirect('/user/agent-list/')
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class AgentFilterView(FilterView, ListView):
+    template_name = 'filter/agent_filter.html'
+    model = Agent
+    form_class = AgentFilter
+    filterset_fields = ['agent', 'company_name', 'nid_number', 'website']
+    context_object_name = 'agent'

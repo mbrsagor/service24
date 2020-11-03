@@ -1,0 +1,49 @@
+<div class="card">
+    <h5 class="card-header">List of Agent</h5>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Owner</th>
+                <th>Company Name</th>
+                <th>Contact Number</th>
+                <th>Treat Lice</th>
+                <th>Website</th>
+                <th>Created Date</th>
+                {% if request.user.is_superuser %}
+                    <th class="text-center">Actions</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% if agent_list %}
+                {% for obj in agent_list %}
+                    <tr>
+                        <td>{{ obj.username }}</td>
+                        <td>{{ obj.service_agent.company_name }}</td>
+                        <td>0{{ obj.service_agent.contact_number }}</td>
+                        <td>{{ obj.service_agent.treat_lice }}</td>
+                        <td><a target="_blank" href="{{ obj.service_agent.website }}">
+                            {{ obj.service_agent.website }}</a></td>
+                        <td>{{ obj.service_agent.created_at }}</td>
+                        {% if request.user.is_superuser %}
+                            <td class="text-center">
+                                <a class="mr-2" href="{% url 'agent_profile' %}"> <i
+                                        class=" fa fa-eye"> </i></a>
+                                <a class="mr-2" href="
+{% url 'update_agent_profile' obj.service_agent.pk %}"> <i class=" fa
+                                            fa-edit"> </i></a>
+                                <a href="{% url 'delete_agent' obj.service_agent.id %}"> <i
+                                        class=" fa fa-trash">
+                                </i></a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3 class="text-center text-danger">Sorry! No agent added.</h3>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
