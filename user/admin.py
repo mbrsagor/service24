@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User, Agent
+from .models import User, Agent, Profile
 
 
 class AdminUser(admin.ModelAdmin):
@@ -21,3 +21,13 @@ class AgentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Agent, AgentAdmin)
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'address', 'created_at', 'updated_at']
+    search_fields = ['user', 'address']
+    list_filter = ['user', 'address']
+    list_per_page = 8
+
+
+admin.site.register(Profile, ProfileAdmin)

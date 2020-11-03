@@ -45,3 +45,20 @@ def create_agent_profile(sender, created, instance, **kwargs):
     if created:
         agent_profile = Agent(agent=instance)
         agent_profile.save()
+
+
+# User Profile
+class Profile(BaseEntity):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    address = models.CharField(max_length=220)
+    profile_picture = models.ImageField(upload_to='profile', blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+@receiver(post_save, sender=User)
+def create_profile(sender, created, instance, **kwargs):
+    if created:
+        profile = Profile(agent=instance)
+        profile.save()

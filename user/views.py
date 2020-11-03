@@ -8,8 +8,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django_filters.views import FilterView
 
-from .models import User, Agent
-from .forms import CreateAgentFrom
+from .models import User, Agent, Profile
+from .forms import CreateAgentFrom, ProfileForm
 from service.models.order import Order
 from .filter import AgentFilter
 
@@ -123,3 +123,20 @@ class AgentFilterView(FilterView, ListView):
 
     def get_queryset(self):
         return User.objects.filter(is_staff=True)
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class ProfileUpdateView(SuccessMessageMixin, UpdateView):
+    template_name = 'profile_update.html'
+    success_message = "Profile has been successfully updated!"
+    model = Profile
+    form_class = ProfileForm
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(agent=self.request.user)
+
+    def get_success_url(self):
+        return reverse('profile_update', kwargs={
+            'pk': self.object.pk,
+        })
