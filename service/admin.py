@@ -25,7 +25,18 @@ class ModelOrder(admin.ModelAdmin):
 
 
 admin.site.register(Order, ModelOrder)
-admin.site.register(Schedule)
+
+
+class ModelSchedule(admin.ModelAdmin):
+    list_display = ['id', 'name', 'time', 'created_at', 'updated_at']
+    search_fields = ['name', 'time']
+    list_display_links = ['name', ]
+    list_editable = ['time']
+    list_filter = ['name', 'time']
+    list_per_page = 8
+
+
+admin.site.register(Schedule, ModelSchedule)
 
 
 class ModelReview(admin.ModelAdmin):

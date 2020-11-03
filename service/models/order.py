@@ -7,8 +7,8 @@ from service.models.service import Service
 
 
 class Schedule(BaseEntity):
-    name = models.CharField(max_length=50, blank=True, null=True)
-    date = models.DateField()
+    name = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True, blank=True)
     time = models.TimeField()
 
     def __str__(self):

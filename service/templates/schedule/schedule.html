@@ -1,0 +1,42 @@
+<div class="card">
+    <h5 class="card-header">List of schedule</h5>
+    <div class="card-body">
+        {% if schedule %}
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Schedule Name</th>
+                    <th>Schedule Status</th>
+                    <th>Schedule Time</th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in schedule %}
+                    <tr>
+                        <td>{{ obj.name }}</td>
+                        <td>{% if obj.is_active %} Activated {% else %} Deactivated {% endif %}</td>
+                        <td>{{ obj.time }}</td>
+                        <td>{{ obj.created_at }}</td>
+                        <td>{{ obj.updated_at }}</td>
+                        <td class="text-center">
+                            <a class="mr-2" href="{% url 'schedule_update' obj.pk %}"> <i class=" fa
+                                        fa-edit"> </i></a>
+                            <a href="{% url 'schedule_delete' obj.pk %}"> <i class=" fa fa-trash"> </i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h3 class="text-center text-danger">Sorry! No schedule found.</h3>
+        {% endif %}
+        <!-- pagination -->
+        {% if is_paginated %}
+            {% include "category/pagination.html" %}
+        {% endif %}
+        <!-- end pagination -->
+    </div>
+</div>
