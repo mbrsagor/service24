@@ -2356,9 +2356,9 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
     top: 15px;}
     .product-wishlist-btn:hover{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
     .product-wishlist-btn.active{border-color: #ff3367; color: #ff3367;transition: 0.3s ease;}
-.product-content{ border-top:1px solid #e6e6f2; padding: 23px;}
+.product-content{ border-top:1px solid #e6e6f2; padding: 13px;}
 .product-content-head{ position: relative; margin-bottom: 25px; }
-.product-title{font-size: 16px; margin-bottom: 5px;}
+.product-title{font-size: 14px; margin-bottom: 5px; white-space: nowrap; width: 220px; overflow: hidden;text-overflow: ellipsis;}
 .product-rating{font-size: 12px;
 
     color: #ffa811;}
