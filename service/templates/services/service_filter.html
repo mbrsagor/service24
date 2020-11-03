@@ -9,17 +9,17 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
-                <h5 class="card-header">Location Filter</h5>
+                <h5 class="card-header">Service Filter</h5>
                 <div class="card-body custom_filter">
                     <form method="get">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="service_name">Enter Service Name</label>
                                     {{ filter.form.service_name }}
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="parent">Enter Service Price</label>
                                     {{ filter.form.price }}
@@ -27,18 +27,20 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="location_type">Enter Service Package Name</label>
-                                    {{ filter.form.package_name }}
+                                    <label for="category">Enter Service Category</label>
+                                    {{ filter.form.category }}
                                 </div>
                             </div>
-                            <div class="col-lg-1 text-right">
-                                <div class="mt-4">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                        Filter <i class="fa fa-filter"></i>
-                                    </button>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="location">Enter Service Location</label>
+                                    {{ filter.form.location }}
                                 </div>
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-success btn-sm">
+                            Filter <i class="fa fa-filter"></i>
+                        </button>
                     </form>
                 </div>
             </div>

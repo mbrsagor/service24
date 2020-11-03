@@ -13,7 +13,9 @@
                     <th>Price</th>
                     <th>Available</th>
                     <th>Order Date</th>
-                    <th class="text-center">Actions</th>
+                    {% if request.user.is_superuser %}
+                        <th class="text-center">Actions</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -29,14 +31,16 @@
                         <td>{% if obj.is_active %} Available {% else %} Not Available
                         {% endif %}</td>
                         <td>{{ obj.created_at }}</td>
-                        <td class="text-center">
-                            <a class="mr-2" href="{% url 'service_detail' obj.id %}"> <i class="fa fa-eye">
-                            </i></a>
-                            <a class="mr-2" href="{% url 'service_update' obj.id %}"> <i class="fa
+                        {% if request.user.is_superuser %}
+                            <td class="text-center">
+                                <a class="mr-2" href="{% url 'service_detail' obj.id %}"> <i class="fa fa-eye">
+                                </i></a>
+                                <a class="mr-2" href="{% url 'service_update' obj.id %}"> <i class="fa
                                         fa-edit">
-                            </i></a>
-                            <a href="{% url 'service_delete' obj.pk %}"> <i class="fa fa-trash"> </i></a>
-                        </td>
+                                </i></a>
+                                <a href="{% url 'service_delete' obj.pk %}"> <i class="fa fa-trash"> </i></a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>
