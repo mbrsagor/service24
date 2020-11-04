@@ -134,7 +134,7 @@ class ProfileUpdateView(SuccessMessageMixin, UpdateView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(agent=self.request.user)
+        return queryset.filter(user=self.request.user.id)
 
     def get_success_url(self):
         return reverse('profile_update', kwargs={

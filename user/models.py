@@ -60,5 +60,5 @@ class Profile(BaseEntity):
 @receiver(post_save, sender=User)
 def create_profile(sender, created, instance, **kwargs):
     if created:
-        profile = Profile(agent=instance)
+        profile = Profile(user=instance)
         profile.save()
