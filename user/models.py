@@ -50,11 +50,19 @@ def create_agent_profile(sender, created, instance, **kwargs):
 # User Profile
 class Profile(BaseEntity):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    first_name = models.CharField(max_length=60, blank=True, null=True)
+    last_name = models.CharField(max_length=60, blank=True, null=True)
+    profession = models.CharField(max_length=60, blank=True, null=True)
+    age = models.IntegerField(default=0)
     address = models.CharField(max_length=220)
     profile_picture = models.ImageField(upload_to='profile', blank=True, null=True)
 
     def __str__(self):
         return self.user.username
+
+    @property
+    def make_full_name(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 @receiver(post_save, sender=User)
@@ -62,3 +70,8 @@ def create_profile(sender, created, instance, **kwargs):
     if created:
         profile = Profile(user=instance)
         profile.save()
+
+
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, **kwargs):
+    instance.profile.save()
