@@ -55,7 +55,8 @@ class UserListView(ListView):
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UserDetailView(DetailView):
     template_name = 'profile.html'
-    model = User
+    model = Profile
+    context_object_name = 'profile'
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
