@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User, Agent, Profile
+from .models import User, Agent, UserProfile
 
 
 class AdminUser(admin.ModelAdmin):
@@ -30,4 +30,4 @@ class ProfileAdmin(admin.ModelAdmin):
     list_per_page = 8
 
 
-admin.site.register(Profile, ProfileAdmin)
+admin.site.register(UserProfile, ProfileAdmin)

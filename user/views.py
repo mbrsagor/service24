@@ -8,7 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django_filters.views import FilterView
 
-from .models import User, Agent, Profile
+from .models import User, Agent, UserProfile
 from .forms import CreateAgentFrom, ProfileForm
 from service.models.order import Order
 from .filter import AgentFilter
@@ -53,10 +53,10 @@ class UserListView(ListView):
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
-class UserDetailView(DetailView):
+class UserDetailView(ListView):
     template_name = 'profile.html'
-    model = Profile
-    context_object_name = 'profile'
+    model = UserProfile
+    context_object_name = 'profile_ctx'
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -130,7 +130,7 @@ class AgentFilterView(FilterView, ListView):
 class ProfileUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'profile_update.html'
     success_message = "Profile has been successfully updated!"
-    model = Profile
+    model = UserProfile
     form_class = ProfileForm
 
     def get_queryset(self):
