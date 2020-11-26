@@ -16,6 +16,7 @@ class User(AbstractUser):
         return self.username
 
 
+# Agent profile
 class Agent(BaseEntity):
     agent = models.OneToOneField(User, on_delete=models.CASCADE, related_name='service_agent')
     company_name = models.CharField(max_length=80)

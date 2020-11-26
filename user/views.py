@@ -14,6 +14,7 @@ from service.models.order import Order
 from .filter import AgentFilter
 
 
+# User profile list
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class ProfileListView(ListView):
     model = User
@@ -28,6 +29,7 @@ class ProfileListView(ListView):
         return Order.objects.filter(user=self.request.user)
 
 
+# All user list
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UserListView(ListView):
     model = User
@@ -52,6 +54,7 @@ class UserListView(ListView):
         return context
 
 
+# User profile
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UserDetailView(ListView):
     template_name = 'profile.html'
@@ -59,6 +62,7 @@ class UserDetailView(ListView):
     context_object_name = 'profile_ctx'
 
 
+# Delete user profile
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UserDeleteView(View):
 
@@ -68,6 +72,7 @@ class UserDeleteView(View):
         return redirect('/user/user-list/')
 
 
+# Update user profile
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
     success_message = "Agent successfully updated!"
@@ -85,6 +90,7 @@ class UpdateAgentProfile(SuccessMessageMixin, UpdateView):
         })
 
 
+# List of agent profile list
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class AgentProfile(ListView):
     model = Agent
@@ -95,6 +101,7 @@ class AgentProfile(ListView):
         return Agent.objects.get(agent=self.request.user)
 
 
+# Agent profile
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class ListOfAgent(ListView):
     model = Agent
@@ -106,6 +113,7 @@ class ListOfAgent(ListView):
         return User.objects.filter(is_staff=True)
 
 
+# Delete agent
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class DeleteAgent(View):
     def get(self, request, id):
@@ -114,6 +122,7 @@ class DeleteAgent(View):
         return redirect('/user/agent-list/')
 
 
+# Search/Filter agent list view
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class AgentFilterView(FilterView, ListView):
     template_name = 'filter/agent_filter.html'
@@ -126,6 +135,7 @@ class AgentFilterView(FilterView, ListView):
         return User.objects.filter(is_staff=True)
 
 
+# Regular user update profile view
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class ProfileUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'profile_update.html'
