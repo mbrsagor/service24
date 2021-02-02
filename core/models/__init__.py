@@ -1,1 +1,1 @@
-from core.models.base import BaseEntityfrom core.models.category import Categoryfrom core.models.location import Location__author__ = 'Sagor'__all__ = [    'BaseEntity',    'Category',    'Location',]
+from core.models.base import BaseEntityfrom core.models.category import Categoryfrom core.models.location import Locationfrom core.models.setting import Setting__author__ = 'Sagor'__all__ = [    'BaseEntity',    'Category',    'Location',    'Setting',]
