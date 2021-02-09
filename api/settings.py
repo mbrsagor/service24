@@ -12,6 +12,6 @@ class SettingSerializer(ModelSerializer):
 
 
 class ApplicationSettingViewSet(ModelViewSet):
-    queryset = Service.objects.all()
+    queryset = Setting.objects.all()
     serializer_class = SettingSerializer
     permission_classes = [IsAuthenticated, ]
