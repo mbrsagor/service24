@@ -62,3 +62,38 @@ pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py runserver
 ```
+
+N:B: Here, I used ``mongoDB`` if you use ```mysql``` or ```postgresql``` you may use easily. Please follow the below command.
+###### Mysql
+```base
+pip install mysql client
+```
+Then
+```mysql based
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'service24',
+        'USER': 'sagor',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+```
+
+###### Postgre
+
+Then
+```postgresql based
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'service24',
+        'USER': 'sagor',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+```
