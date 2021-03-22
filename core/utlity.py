@@ -1,3 +1,5 @@
+from enum import IntEnum
+
 LOCATION_TYPE_CHOICES = [
     (1, 'Country'),
     (2, 'City'),
@@ -7,3 +9,13 @@ LOCATION_TYPE_CHOICES = [
     (6, 'PostOffice'),
     (7, 'Division')
 ]
+
+
+class GENDER(IntEnum):
+    MALE = 0
+    FEMALE = 1
+    OTHER = 2
+
+    @classmethod
+    def get_choices(cls):
+        return [(key.value, key.name) for key in cls]

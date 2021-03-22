@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from core.models.base import BaseEntity
+from core.utlity import GENDER
 
 
 class User(AbstractUser):
@@ -56,7 +57,8 @@ class UserProfile(BaseEntity):
     profession = models.CharField(max_length=60, blank=True, null=True)
     age = models.IntegerField(default=0)
     address = models.CharField(max_length=220)
-    profile_picture = models.ImageField(upload_to='profile', blank=True, null=True)
+    gender = models.IntegerField(choices=GENDER.get_choices(), default=GENDER.MALE.value)
+    profile_picture = models.ImageField(upload_to='agent', blank=True, null=True)
 
     def __str__(self):
         return self.user.username
