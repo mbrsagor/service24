@@ -24,8 +24,8 @@ admin.site.register(Agent, AgentAdmin)
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'address', 'created_at', 'updated_at']
-    search_fields = ['user', 'address']
+    list_display = ['id', 'user', 'address', 'gender', 'created_at', 'updated_at']
+    search_fields = ['user', 'gender', 'address']
     list_filter = ['user', 'address']
     list_per_page = 8
 

@@ -49,7 +49,7 @@ def create_agent_profile(sender, created, instance, **kwargs):
         agent_profile.save()
 
 
-# User Profile
+# General User Profile
 class UserProfile(BaseEntity):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=60, blank=True, null=True)
