@@ -85,7 +85,7 @@ DATABASES = {
 ###### Postgre
 
 Then
-```postgresql based
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
