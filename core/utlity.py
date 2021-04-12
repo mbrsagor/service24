@@ -19,3 +19,14 @@ class GENDER(IntEnum):
     @classmethod
     def get_choices(cls):
         return [(key.value, key.name) for key in cls]
+
+
+class DeliveryStatus(IntEnum):
+    PROGRESS = 0
+    ONGOING = 1
+    FAILED = 2
+    DONE = 3
+
+    @classmethod
+    def get_choices(cls):
+        return [(key.value, key.name) for key in cls]

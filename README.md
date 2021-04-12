@@ -2,7 +2,7 @@
 
 ## Setup
 
-### Dependencies
+##### Dependencies / Prerequisites
 
 - Python 3.8.5
 - Django 3.0.5
