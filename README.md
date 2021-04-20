@@ -2,13 +2,14 @@
 
 ## Setup
 
-##### Dependencies / Prerequisites
+##### Dependencies
+> Prerequisites
 
 - Python 3.8.5
 - Django 3.0.5
 - MongoDB 4.0.14
 
-The following steps will walk you thru installation on a Mac. Linux should be similar. It's also possible to develop 
+The following steps will walk you thru installation on a Mac. I think linux should be similar. It's also possible to develop 
 on a Windows machine, but I have not documented the steps. If you've developed django apps on Windows, you should have little problem getting up and running.
 
 ###### On Mac
