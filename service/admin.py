@@ -4,6 +4,7 @@ from service.models.service import Service
 from service.models.order import Order, Schedule
 from service.models.review import Review
 from service.models.payment import Payment
+from service.models.delivery import Delivery
 
 
 class ModelService(admin.ModelAdmin):
@@ -52,3 +53,14 @@ class ModelReview(admin.ModelAdmin):
 admin.site.register(Review, ModelReview)
 
 admin.site.register(Payment)
+
+
+class ModelDelivery(admin.ModelAdmin):
+    list_display = ['id', 'name', 'delivery_charge', 'status', 'delivery_man', 'delivery_service']
+    search_fields = ['name', 'delivery_service', 'delivery_man']
+    list_editable = ['delivery_charge']
+    list_filter = ['name', 'delivery_charge', 'status']
+    list_display_links = ['id', 'name']
+    list_per_page = 8
+
+admin.site.register(Delivery, ModelDelivery)
