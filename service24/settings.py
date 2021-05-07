@@ -1,4 +1,5 @@
 import os
+import environ
 from config.db_development import DATABASES
 
 from django.contrib.messages import constants as messages
@@ -8,36 +9,48 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+env = environ.Env(
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list),
+)
+
+envfile_path = os.path.join(BASE_DIR, '.env')
+environ.Env.read_env(envfile_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u0f2-z_jx-2$iobj!z0*8=ffwl-c20@+u-j9h+l*z*f6h5(nt='
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
-INSTALLED_APPS = [
+DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
 
-    'core',
-    'service',
-    'user',
-
-    # 3rd party app
+THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
     'django_filters'
 ]
+
+LOCAL_APPS = [
+    'core',
+    'service',
+    'user',
+]
+
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"  # During development only
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
