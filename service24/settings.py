@@ -1,6 +1,6 @@
 import os
 import environ
-from config.db_development import DATABASES
+# from config.db_development import DATABASES
 
 from django.contrib.messages import constants as messages
 
@@ -132,6 +132,27 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': env("DB_NAME"),
+        'host': env("DB_HOST"),
+        'port': env("DB_PORT")
+    }
+}
+
+# If use postgresql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USERNAME"),
+#         'PASSWORD': env("DB_PASSWORD"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#     }
+# }
 
 # Django Message Framework
 MESSAGE_TAGS = {
