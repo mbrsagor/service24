@@ -1,1 +1,0 @@
-# Database# https://docs.djangoproject.com/en/3.1/ref/settings/#databasesDATABASES = {    'default': {        'ENGINE': 'djongo',        'NAME': 'service24',        'host': 'localhost',        'port': 27017    }}

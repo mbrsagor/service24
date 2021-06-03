@@ -1,6 +1,5 @@
 import os
 import environ
-# from config.db_development import DATABASES
 
 from django.contrib.messages import constants as messages
 
