@@ -51,7 +51,6 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"  # During development only
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 MIDDLEWARE = [
@@ -166,12 +165,14 @@ LOGIN_REDIRECT_URL = 'login/'
 AUTH_USER_MODEL = 'user.User'
 
 # Mail sending using SMTP
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'user'
-EMAIL_HOST_PASSWORD = 'password'
-DEFAULT_FROM_EMAIL = 'your email'
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_PORT = env('EMAIL_PORT')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+FROM_EMAIL = env('FROM_EMAIL')
 
 # Django REST framework
 REST_FRAMEWORK = {
