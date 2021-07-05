@@ -56,10 +56,10 @@ admin.site.register(Payment)
 
 
 class ModelDelivery(admin.ModelAdmin):
-    list_display = ['id', 'name', 'delivery_charge', 'status', 'delivery_man', 'delivery_service']
+    list_display = ['id', 'name', 'delivery_charge', 'delivery_man', 'delivery_service']
     search_fields = ['name', 'delivery_service', 'delivery_man']
     list_editable = ['delivery_charge']
-    list_filter = ['name', 'delivery_charge', 'status']
+    list_filter = ['name', 'delivery_charge']
     list_display_links = ['id', 'name']
     list_per_page = 8
 
