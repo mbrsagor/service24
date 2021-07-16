@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  db:
+    image: "mongo"
+    container_name: "service24-container"
+    environment:
+      - MONGO_INITDB_DATABASE=service24
+      - MONGO_INITDB_ROOT_USER=service24_user
+      - MONGO_INITDB_ROOT_PASSWORD=service24_password
+    ports:
+      - 27017:27017
+
+    volumes:
+      - mongodb_data_container:/data/db
+
+    # mongodb_container:
+    # image: mongo:latest
+    # environment:
+    #     MONGO_INITDB_DATABASE: service24
+    #     MONGO_INITDB_ROOT_USERNAME: mbr-sagor
+    #     MONGO_INITDB_ROOT_PASSWORD: service24_password
+    # ports:
+    #     - 27017:27017
+    # volumes:
+    #     - mongodb_data_container:/data/db
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
