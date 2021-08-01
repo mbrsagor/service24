@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Load static files
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,7 +25,9 @@ urlpatterns = [
     path('', include('core.urls')),
     path('service/', include('service.urls')),
     path('user/', include('user.urls')),
+    # Rest API endpoint
     path('api/', include('api.urls')),
+    # Rest API user login, logout, reset password and profile
     path('api/rest-auth/', include('rest_auth.urls')),
     # path('account/', include('django.contrib.auth.urls')),
 ]
