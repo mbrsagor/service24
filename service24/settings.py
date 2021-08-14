@@ -1,6 +1,6 @@
 import os
-import environ
 
+import environ
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,6 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
-
 DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +39,8 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-    'django_filters'
+    'django_filters',
+    'django_celery_results',
 ]
 
 LOCAL_APPS = [
@@ -184,3 +184,8 @@ CORS_ORIGIN_WHITELIST = [
 # allow upload big file
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 15  # 15M
 FILE_UPLOAD_MAX_MEMORY_SIZE = DATA_UPLOAD_MAX_MEMORY_SIZE
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "Asia/Dhaka"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
