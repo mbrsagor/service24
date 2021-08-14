@@ -1,9 +1,10 @@
-from django.db import models
-
-from user.models import User
 from core.models.base import BaseEntity
 from core.models.location import Location
+from django.db import models
+from user.models import User
+
 from service.models.service import Service
+
 # from core.utils import DeliveryStatus
 
 
