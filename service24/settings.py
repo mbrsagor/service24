@@ -40,7 +40,7 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'django_filters',
-    'django_celery_results',
+    # 'django_celery_results',
 ]
 
 LOCAL_APPS = [

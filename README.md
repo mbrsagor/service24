@@ -43,6 +43,8 @@ brew install python3
 Assuming you've cloned the repository, open Terminal and `cd ~/your/path/to/service24`.
 
 ```bash/zsh
+cd clone https://github.com/mbrsagor/service24.git
+cd service24
 virtualenv venv --python=python3.8
 ```
 
@@ -52,9 +54,12 @@ Activate it:
 source venv/bin/activate
 ```
 
-###### Config database on the project.
+###### Then create ``.env`` file and paste code from `.env-sample` file and add validate information.
 
-> First go to `config` folder then change the file name db_sample => db_development.py
+-------------------------------------------
+```bash
+|--> .env-sample
+|--> .env
 
 Install the python dependencies which includes django and other libraries.
 
@@ -65,46 +70,8 @@ pip install -r requirements.txt
 #### Run server locally
 
 ```
+./manage.py makemigrations user
+./manage.py migrate user
 ./manage.py migrate
 ./manage.py runserver
-```
-
-N:B: Here, I used `mongoDB` if you use `mysql` or `postgresql` you may use easily. Please follow the below command.
-
-###### Mysql
-
-```base
-pip install mysql client
-```
-
-Then
-
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'service24',
-        'USER': 'sagor',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
-}
-```
-
-###### Postgre
-
-Then
-
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'service24',
-        'USER': 'sagor',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
 ```
