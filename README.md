@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 #### Run server locally
 
-```
+```bash
 ./manage.py makemigrations user
 ./manage.py migrate user
 ./manage.py migrate
