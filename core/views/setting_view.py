@@ -12,4 +12,3 @@ class ApplicationSetting(SuccessMessageMixin, generic.CreateView, generic.ListVi
     model = Setting
     form_class = SettingForm
     success_message = "Application setting updated successfully!"
-
