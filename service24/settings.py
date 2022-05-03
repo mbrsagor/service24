@@ -129,6 +129,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# MongoDB configuration.
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -146,9 +147,9 @@ MESSAGE_TAGS = {
     messages.WARNING: 'WARNING'
 }
 
+# Django auth user info
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = 'login/'
-
 AUTH_USER_MODEL = 'user.User'
 
 # Mail sending using SMTP
@@ -167,7 +168,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 8,
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
@@ -179,6 +179,6 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000'
 ]
 
-# allow upload big file
+# Allow upload big file
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 15  # 15M
 FILE_UPLOAD_MAX_MEMORY_SIZE = DATA_UPLOAD_MAX_MEMORY_SIZE
