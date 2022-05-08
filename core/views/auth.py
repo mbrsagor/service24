@@ -1,9 +1,9 @@
-from django.contrib.auth.views import LoginView
-from django.contrib.auth import login, logout
-from django.shortcuts import resolve_url
 from django.views import View
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.shortcuts import resolve_url
+from django.contrib.auth import login, logout
+from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView
 
 from core.forms.auth.forms import CustomAuthenticationForm
@@ -26,7 +26,6 @@ class Login(LoginView):
 
         if remember_me:
             self.request.session.set_expiry(1209600)
-
         return super(Login, self).form_valid(form)
 
 

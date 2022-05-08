@@ -9,13 +9,12 @@
             <a href="{% url 'dashboard' %}">
                 <img class="logo-img" src="{% static 'assets/images/logo.png' %}" alt="logo"></a>
             <span class="splash-description">
-            {% if form.errors %}
-                <p class="alert alert-danger" role="alert">Your username and password didn't match.Please try again.
-                </p>
-
-            {% endif %}
-
-        </span></div>
+                {% if form.errors %}
+                    <p class="alert alert-danger" role="alert">Your username and password didn't match.Please try again.
+                    </p>
+                {% endif %}
+            </span>
+        </div>
         <div class="card-body">
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
