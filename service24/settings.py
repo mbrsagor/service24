@@ -35,17 +35,17 @@ DEFAULT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'rest_auth',
     'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',
-    'rest_auth',
     'django_filters',
+    'rest_framework.authtoken',
 ]
 
 LOCAL_APPS = [
     'core',
-    'service',
     'user',
+    'service',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -139,11 +139,10 @@ DATABASES = {
     }
 }
 
-
 # Django Message Framework
 MESSAGE_TAGS = {
-    messages.INFO: 'SUCCESS',
     messages.ERROR: 'ERROR',
+    messages.INFO: 'SUCCESS',
     messages.WARNING: 'WARNING'
 }
 
@@ -153,8 +152,8 @@ LOGIN_REDIRECT_URL = 'login/'
 AUTH_USER_MODEL = 'user.User'
 
 # Mail sending using SMTP
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
