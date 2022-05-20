@@ -17,10 +17,10 @@ class Schedule(BaseEntity):
 
 
 class Order(BaseEntity):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='service_order')
-    item = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='OrderItem')
-    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='order_schedule')
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='order_location')
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='service_order')
+    item = models.ForeignKey(Service, on_delete=models.DO_NOTHING, related_name='OrderItem')
+    schedule = models.ForeignKey(Schedule, on_delete=models.DO_NOTHING, related_name='order_schedule')
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING, related_name='order_location')
     order_date = models.DateField()
     phone_number = models.IntegerField(default=0)
 
