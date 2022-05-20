@@ -1,5 +1,4 @@
-from django.forms import ModelForm
-from django.forms.widgets import TextInput, FileInput
+from django.forms import ModelForm, TextInput, FileInput
 
 from service.models.payment import Payment
 
