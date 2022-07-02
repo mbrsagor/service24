@@ -63,4 +63,5 @@ class ModelDelivery(admin.ModelAdmin):
     list_display_links = ['id', 'name']
     list_per_page = 8
 
+
 admin.site.register(Delivery, ModelDelivery)
