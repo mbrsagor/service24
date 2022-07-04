@@ -37,3 +37,11 @@ class Order(BaseEntity):
 
     def __str__(self):
         return self.user.username
+
+    @property
+    def customer(self):
+        return self.user.username
+
+    @property
+    def addresses(self):
+        return self.location.name
