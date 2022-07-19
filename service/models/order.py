@@ -25,11 +25,11 @@ class Order(BaseEntity):
     phone_number = models.IntegerField(default=0)
 
     class STATUS(models.TextChoices):
-        PENDING = 'pending', _('pending')
-        CONFIRM = 'confirm', _('confirm')
-        DOING = 'doing', _('doing')
-        REJECT = 'reject', _('reject')
-        DONE = 'done', _('done')
+        PENDING = 'pending', _('Pending')
+        CONFIRM = 'confirm', _('Confirm')
+        DOING = 'doing', _('Doing')
+        REJECT = 'reject', _('Reject')
+        DONE = 'done', _('Done')
 
     status = models.CharField(max_length=10, choices=STATUS.choices, default=STATUS.PENDING, null=True)
     payment_status = models.BooleanField(default=False, blank=True)
