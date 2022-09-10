@@ -18,7 +18,7 @@ from .filter import AgentFilter
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class ProfileListView(ListView):
     model = User
-    template_name = 'profile.html'
+    template_name = 'profile/profile.html'
     context_object_name = 'order_list'
 
     def get_context_data(self, **kwargs):
@@ -57,7 +57,7 @@ class UserListView(ListView):
 # User profile
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class UserDetailView(ListView):
-    template_name = 'profile.html'
+    template_name = 'profile/profile.html'
     model = UserProfile
     context_object_name = 'profile_ctx'
 
@@ -138,7 +138,7 @@ class AgentFilterView(FilterView, ListView):
 # Regular user update profile view
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class ProfileUpdateView(SuccessMessageMixin, UpdateView):
-    template_name = 'profile_update.html'
+    template_name = 'profile/profile_update.html'
     success_message = "Profile has been successfully updated!"
     model = UserProfile
     form_class = ProfileForm
