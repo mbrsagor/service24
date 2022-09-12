@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import resolve_url
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
+from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
 from core.forms.auth.forms import CustomAuthenticationForm
@@ -40,3 +41,7 @@ class SingUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'auth/signup.html'
+
+
+class ForgotPasswordView(TemplateView):
+    template_name = 'auth/forgot_password.html'
