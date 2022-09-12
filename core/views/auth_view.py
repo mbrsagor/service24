@@ -1,14 +1,15 @@
+from django.contrib import messages
 from django.views import View
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.shortcuts import resolve_url
 from django.contrib.auth import login, logout
+from django.shortcuts import redirect, render
 from django.contrib.auth.views import LoginView
-from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
 from core.forms.auth.forms import CustomAuthenticationForm
 from core.forms.auth.registrationForm import CustomUserCreationForm
+from user.models import User
 
 
 class Login(LoginView):
@@ -43,5 +44,16 @@ class SingUpView(CreateView):
     template_name = 'auth/signup.html'
 
 
-class ForgotPasswordView(TemplateView):
+def forgot_password(request):
+    try:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            if not User.objects.filter(username=username).first():
+                messages.success(request, "Not user found with this username.")
+                return redirect('/')
+            user_obj = User.objects.get(username=username)
+
+    except Exception as ex:
+        print(ex)
     template_name = 'auth/forgot_password.html'
+    return render(request, template_name)
