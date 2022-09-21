@@ -1,11 +1,13 @@
-from django.views.generic import ListView, UpdateView, DetailView
+from django.core.mail import send_mail
+from django.views.generic import CreateView, ListView, UpdateView
 from django.views import View
-from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django_filters.views import FilterView
 
 from .models import User, Agent, UserProfile
@@ -151,3 +153,31 @@ class ProfileUpdateView(SuccessMessageMixin, UpdateView):
         return reverse('profile_update', kwargs={
             'pk': self.object.pk,
         })
+
+
+"""
+Title: Create agent from admin.
+Desc: Admin can create any kind of agents from here.
+"""
+
+
+@method_decorator(user_passes_test(lambda user: user.is_superuser or user.is_staff), name='dispatch')
+class CreateUserView(SuccessMessageMixin, CreateView):
+    """
+    Name: Create agent.
+    Desc: Admin will create user from the system.
+    """
+    form_class = CreateAgentFrom
+    success_url = reverse_lazy('create_user')
+    success_message = 'The agent has been created successfully.'
+    template_name = 'agent/create_agent.html'
+
+    def form_valid(self, form):
+        cd = form.cleaned_data
+        email_to = cd['email']
+        subject = "{0} Login credentials ".format(
+            cd['email'])
+        mes = "Welcome to BD service24 new member! Please check below your login credentials for login in your account."
+        message = f"{mes}\n\nPhone Number: {cd['phone_number']}\nPassword: {cd['password1']}"
+        send_mail(subject, message, settings.EMAIL_HOST, [email_to, ])
+        return super().form_valid(form)
