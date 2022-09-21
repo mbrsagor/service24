@@ -1,14 +1,14 @@
-from django.core.mail import send_mail
-from django.views.generic import CreateView, ListView, UpdateView
 from django.views import View
 from django.conf import settings
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.utils.decorators import method_decorator
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import redirect
-from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse, reverse_lazy
+from django.core.mail import send_mail
 from django_filters.views import FilterView
+from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic import CreateView, ListView, UpdateView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .models import User, Agent, UserProfile
 from .forms import CreateAgentFrom, ProfileForm
