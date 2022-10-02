@@ -1,5 +1,5 @@
-from django.contrib import messages
 from django.views import View
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.shortcuts import resolve_url
 from django.contrib.auth import login, logout
@@ -52,7 +52,7 @@ def forgot_password(request):
                 messages.success(request, "Not user found with this username.")
                 return redirect('/')
             user_obj = User.objects.get(username=username)
-
+            print(user_obj)
     except Exception as ex:
         print(ex)
     template_name = 'auth/forgot_password.html'

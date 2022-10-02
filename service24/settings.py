@@ -150,6 +150,7 @@ MESSAGE_TAGS = {
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = 'login/'
 AUTH_USER_MODEL = 'user.User'
+AUTHENTICATION_BACKENDS = ["user.backend.AuthenticationBackend"]
 
 # Mail sending using SMTP
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
