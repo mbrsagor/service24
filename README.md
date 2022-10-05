@@ -58,7 +58,7 @@ source venv/bin/activate
 
 -------------------------------------------
 ```bash
-|--> .env-sample
+|--> .env_sample
 |--> .env
 
 Install the python dependencies which includes django and other libraries.

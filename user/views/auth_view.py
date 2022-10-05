@@ -1,12 +1,12 @@
 from django.views import View
+from django.urls import reverse
 from django.shortcuts import redirect
 from django_filters.views import FilterView
-from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, UpdateView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from user.models import User, Agent, UserProfile
 from user.forms import CreateAgentFrom, ProfileForm
