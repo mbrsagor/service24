@@ -1,19 +1,17 @@
 from django.views import View
-from django.conf import settings
 from django.shortcuts import redirect
-from django.core.mail import send_mail
 from django_filters.views import FilterView
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import ListView, UpdateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 
-from .models import User, Agent, UserProfile
-from .forms import CreateAgentFrom, ProfileForm
+from user.models import User, Agent, UserProfile
+from user.forms import CreateAgentFrom, ProfileForm
 from service.models.order import Order
-from .filter import AgentFilter
+from user.filter import AgentFilter
 
 
 # User profile list
@@ -154,30 +152,3 @@ class ProfileUpdateView(SuccessMessageMixin, UpdateView):
             'pk': self.object.pk,
         })
 
-
-"""
-Title: Create agent from admin.
-Desc: Admin can create any kind of agents from here.
-"""
-
-
-@method_decorator(user_passes_test(lambda user: user.is_superuser or user.is_staff), name='dispatch')
-class CreateUserView(SuccessMessageMixin, CreateView):
-    """
-    Name: Create agent.
-    Desc: Admin will create user from the system.
-    """
-    form_class = CreateAgentFrom
-    success_url = reverse_lazy('create_user')
-    success_message = 'The agent has been created successfully.'
-    template_name = 'agent/create_agent.html'
-
-    def form_valid(self, form):
-        cd = form.cleaned_data
-        email_to = cd['email']
-        subject = "{0} Login credentials ".format(
-            cd['email'])
-        mes = "Welcome to BD service24 new member! Please check below your login credentials for login in your account."
-        message = f"{mes}\n\nPhone Number: {cd['phone_number']}\nPassword: {cd['password1']}"
-        send_mail(subject, message, settings.EMAIL_HOST, [email_to, ])
-        return super().form_valid(form)
