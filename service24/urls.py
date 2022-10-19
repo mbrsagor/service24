@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('core.urls')),
     path('service/', include('service.urls')),
     path('user/', include('user.urls')),
+    path('payment/', include('payment.urls')),
     # Rest API endpoint
     path('api/', include('api.urls')),
     # Rest API user login, logout, reset password and profile
