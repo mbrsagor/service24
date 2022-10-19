@@ -1,5 +1,5 @@
 import os
-
+import stripe
 import environ
 from django.contrib.messages import constants as messages
 
@@ -181,3 +181,6 @@ CORS_ORIGIN_WHITELIST = [
 # Allow upload big file
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 15  # 15M
 FILE_UPLOAD_MAX_MEMORY_SIZE = DATA_UPLOAD_MAX_MEMORY_SIZE
+
+# Stripe payment
+stripe.api_key = env('stripe_api_key')
