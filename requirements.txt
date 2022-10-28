@@ -1,6 +1,7 @@
 amqp==5.1.1
 asgiref==3.2.10
 Babel==2.8.0
+backports.zoneinfo==0.2.1
 billiard==3.6.4.0
 celery==5.1.2
 certifi==2020.6.20
@@ -19,6 +20,7 @@ django-encrypted-model-fields==0.5.8
 django-environ==0.4.5
 django-filter==2.4.0
 django-formtools==2.2
+django-modeltranslation==0.18.5
 django-otp==0.9.4
 django-phonenumber-field==3.0.1
 django-rest-auth==0.9.5
