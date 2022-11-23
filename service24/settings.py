@@ -1,6 +1,7 @@
 import os
 import stripe
 import environ
+from django.utils.translation import gettext_lazy as _
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -108,15 +109,23 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('es', _('Spanish')),
+    ('pt', _('Portuguese')),
+)
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale/')
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
