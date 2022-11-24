@@ -75,3 +75,9 @@ pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py runserver
 ```
+
+###### If need to change langauge below the commands:
+```bash
+django-admin makemessages -l en -l fr -l pt -l es --ignore=venv
+django-admin compilemessages --ignore=venv
+```
