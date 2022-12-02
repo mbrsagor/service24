@@ -108,8 +108,6 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
-
-
 TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
