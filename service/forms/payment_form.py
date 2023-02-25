@@ -4,6 +4,7 @@ from service.models.payment import Payment
 
 
 class PaymentForm(ModelForm):
+    """For dynamic payment options added"""
     class Meta:
         model = Payment
         fields = '__all__'
