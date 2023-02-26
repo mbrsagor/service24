@@ -47,7 +47,6 @@ LOCAL_APPS = [
     'core',
     'user',
     'service',
-    'payment',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -118,7 +117,6 @@ LANGUAGES = (
     ('en', _('English')),
     ('fr', _('French')),
     ('es', _('Spanish')),
-    ('pt', _('Portuguese')),
 )
 
 LOCALE_PATHS = [
