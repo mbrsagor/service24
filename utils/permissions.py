@@ -1,6 +1,5 @@
 from rest_framework import permissions
 
-
 """
 Instance must have an attribute named `owner` or you can change owner with the name of your models fields
  `user = models.ForeignKey(UserModel, on_delete=models.casscade)
@@ -19,3 +18,15 @@ def has_object_permission(self, request, view, obj):
     if request.method in permissions.SAFE_METHODS:
         return True
     return obj.owner == request.user
+
+
+"""
+Example
+
+
+class AdminVideoDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    quesryset = Video.objects.all()
+    serializer_class = VideoSerializer
+
+"""
