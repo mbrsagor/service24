@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
     'django_filters',
+    # 'rest_framework_material',
     'rest_framework.authtoken',
 ]
 
