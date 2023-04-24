@@ -45,8 +45,6 @@ class CustomPagination(pagination.PageNumberPagination):
     def get_paginated_response(self, data):
         next_page = self.get_next_link()
         prev_page = self.get_previous_link()
-        # print(f"Next page: {next_page}")
-        # print(f"Prev page: {prev_page}")
         if next_page is None and prev_page is None:
             return response.Response({
                 'next': 0,
