@@ -1,10 +1,5 @@
 from rest_framework import permissions
 
-"""
-Instance must have an attribute named `owner` or you can change owner with the name of your models fields
- `user = models.ForeignKey(UserModel, on_delete=models.casscade)
-"""
-
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
