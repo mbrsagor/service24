@@ -19,4 +19,4 @@ class PaymentViewSet(ModelViewSet):
     serializer_class = PaymentSerializer
     permission_classes = (IsAdminUser,)
     filter_backends = [DjangoFilterBackend]
-    search_fields = ['name', 'id']
+    search_fields = ['name',]

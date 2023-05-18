@@ -45,3 +45,7 @@ class Order(BaseEntity):
     @property
     def addresses(self):
         return self.location.name
+
+    @property
+    def get_schedule(self):
+        return self.schedule.name
