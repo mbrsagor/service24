@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAdminUser
 from django_filters.rest_framework import DjangoFilterBackend
 
 from service.models.payment import Payment
+from utils.custom_pagination import CustomPagination
 
 
 class PaymentSerializer(ModelSerializer):
@@ -19,4 +20,5 @@ class PaymentViewSet(ModelViewSet):
     serializer_class = PaymentSerializer
     permission_classes = (IsAdminUser,)
     filter_backends = [DjangoFilterBackend]
+    pagination_class = CustomPagination
     search_fields = ['name',]
